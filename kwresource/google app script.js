@@ -2,13 +2,16 @@
 
     var ss = SpreadsheetApp.getActiveSpreadsheet();
     var menuEntries = [];
-    menuEntries.push({ name: "sendForm", functionName: "sendForm" });
-    ss.addMenu("sendForm", menuEntries);
+    menuEntries.push({ name: "Gửi dữ liệu", functionName: "sendForm" });
+    menuEntries.push({ name: "Lấy dữ liệu", functionName: "getData" });
+    ss.addMenu("AutoTool", menuEntries);
 }
 
 function sendForm() {
-    var field1 = "giá trị 1";
-    var field2 = "giá trị 2";
+
+    var field1 = "quan.ton@eduu.vn";
+    var field2 = "mailofquan@gmail.com";
+
     var payload = {
         "field1": field1,
         "field2": field2,
@@ -23,6 +26,10 @@ function sendForm() {
     var response = UrlFetchApp.fetch(myWebsite, data);
     Browser.msgBox(response);
 
+}
+
+function getData() {
+    return;
 }
 
 function getEditDistance(a, b) {

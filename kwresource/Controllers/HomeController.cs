@@ -23,7 +23,7 @@ namespace kwresource.Controllers
         }
 
 
-        public async Task AsyncProcess()
+        public async Task AsyncProcess(string email, string emailCC)
         {
 
 
@@ -49,8 +49,8 @@ namespace kwresource.Controllers
                 msg.Subject = "kwresource done";
                 msg.Body = "done";
                 msg.IsBodyHtml = true;
-                msg.To.Add("quan.ton@eduu.vn");
-                msg.CC.Add("mailofquan@gmail.com");
+                msg.To.Add(email);
+                msg.CC.Add(emailCC);
                 client.Send(msg);
 
             }
@@ -60,6 +60,8 @@ namespace kwresource.Controllers
         public async Task<string> GetForm(FormData formData)
         {
             var result = formData.field1 + "_" + formData.field2;
+            string email = formData.field1;
+            string emailCC = formData.field2;
             var kw = new keyword()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -70,7 +72,7 @@ namespace kwresource.Controllers
 
             try
             {
-                await AsyncProcess().ConfigureAwait(false);
+                await AsyncProcess(email, emailCC).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
