@@ -7,6 +7,8 @@ using System.Data.Entity;
 using kwresource.Models;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace kwresource.Controllers
 {
@@ -20,8 +22,43 @@ namespace kwresource.Controllers
             return View();
         }
 
+
+        public async Task AsyncProcess()
+        {
+
+
+            const string HOST = "email-smtp.us-west-2.amazonaws.com";
+
+            const string SMTP_USERNAME = "AKIAIF7OJHCLUJAFZBKA";  // Replace with your SMTP username. 
+            const string SMTP_PASSWORD = "AnERuonOwPouCRNEVgyeNcVealf2mCidASUstfGAry5L";  // Replace with your SMTP password.
+
+            const int PORT = 587;
+
+            using (SmtpClient client = new SmtpClient(HOST, PORT))
+            {
+                // Create a network credential with your SMTP user name and password.
+                client.Credentials = new NetworkCredential(SMTP_USERNAME, SMTP_PASSWORD);
+
+                // Use SSL when accessing Amazon SES. The SMTP session will begin on an unencrypted connection, and then 
+                // the client will issue a STARTTLS command to upgrade to an encrypted connection using SSL.
+                client.EnableSsl = true;
+
+
+                MailMessage msg = new MailMessage();
+                msg.From = new MailAddress("info@eduu.vn");
+                msg.Subject = "kwresource done";
+                msg.Body = "done";
+                msg.IsBodyHtml = true;
+                msg.To.Add("quan.ton@eduu.vn");
+                msg.CC.Add("mailofquan@gmail.com");
+                client.Send(msg);
+
+            }
+
+        }
+
         public async Task<string> GetForm(FormData formData)
-        {          
+        {
             var result = formData.field1 + "_" + formData.field2;
             var kw = new keyword()
             {
@@ -30,6 +67,16 @@ namespace kwresource.Controllers
             };
             db.keywords.Add(kw);
             db.SaveChanges();
+
+            try
+            {
+                await AsyncProcess().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
             return result;
         }
 
