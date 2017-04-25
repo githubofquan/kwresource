@@ -15,7 +15,7 @@ namespace kwresource.Controllers
         private kwresourceEntities db = new kwresourceEntities();
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Test";
 
             return View();
         }
