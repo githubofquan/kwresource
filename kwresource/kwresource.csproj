@@ -215,6 +215,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="google app script.js" />
     <Content Include="Models\keyword.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>keyword.Context.cs</LastGenOutput>
