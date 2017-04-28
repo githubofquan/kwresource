@@ -17,5 +17,13 @@ namespace kwresource.Models
         public string Id { get; set; }
         public string kw { get; set; }
         public Nullable<int> volume { get; set; }
+        public string landingpage { get; set; }
+        public Nullable<int> currentranking { get; set; }
+        public Nullable<int> kd { get; set; }
+        public Nullable<int> cost { get; set; }
+        public Nullable<int> newcost { get; set; }
+        public string sessionid { get; set; }
+        public Nullable<int> stt { get; set; }
+        public string nosignkw { get; set; }
     }
 }

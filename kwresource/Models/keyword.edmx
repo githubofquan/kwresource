@@ -12,6 +12,14 @@
           <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="kw" Type="nvarchar(max)" Nullable="false" />
           <Property Name="volume" Type="int" />
+          <Property Name="landingpage" Type="nvarchar(max)" />
+          <Property Name="currentranking" Type="int" />
+          <Property Name="kd" Type="int" />
+          <Property Name="cost" Type="int" />
+          <Property Name="newcost" Type="int" />
+          <Property Name="sessionid" Type="nvarchar(max)" />
+          <Property Name="stt" Type="int" />
+          <Property Name="nosignkw" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="kwresourceModelStoreContainer">
           <EntitySet Name="keyword" EntityType="Self.keyword" Schema="dbo" store:Type="Tables" />
@@ -27,6 +35,14 @@
           <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="kw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="volume" Type="Int32" />
+          <Property Name="landingpage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="currentranking" Type="Int32" />
+          <Property Name="kd" Type="Int32" />
+          <Property Name="cost" Type="Int32" />
+          <Property Name="newcost" Type="Int32" />
+          <Property Name="sessionid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="stt" Type="Int32" />
+          <Property Name="nosignkw" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="kwresourceEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="keywords" EntityType="Self.keyword" />
@@ -40,6 +56,14 @@
           <EntitySetMapping Name="keywords">
             <EntityTypeMapping TypeName="kwresourceModel.keyword">
               <MappingFragment StoreEntitySet="keyword">
+                <ScalarProperty Name="nosignkw" ColumnName="nosignkw" />
+                <ScalarProperty Name="stt" ColumnName="stt" />
+                <ScalarProperty Name="sessionid" ColumnName="sessionid" />
+                <ScalarProperty Name="newcost" ColumnName="newcost" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="kd" ColumnName="kd" />
+                <ScalarProperty Name="currentranking" ColumnName="currentranking" />
+                <ScalarProperty Name="landingpage" ColumnName="landingpage" />
                 <ScalarProperty Name="volume" ColumnName="volume" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="kw" ColumnName="kw" />
