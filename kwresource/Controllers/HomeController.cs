@@ -207,7 +207,8 @@ namespace kwresource.Controllers
             var SimilarityAverage = SimilarityEachWord.Average();
 
             //var NewCostOfKWList = SumAllKWCost * listkwlength / (SimilarityAverage * NoOfLandingPage*1.0);
-            var NewCostOfKWList = SumAllKWCost * SimilarityAverage / (listkwlength * NoOfLandingPage * 1.0);
+            //var NewCostOfKWList = SumAllKWCost * SimilarityAverage / (listkwlength * NoOfLandingPage * 1.0);
+            var NewCostOfKWList = SumAllKWCost * SimilarityAverage / (listkwlength * (listkwlength - NoOfLandingPage) * 1.0);
 
             var PercentCostEachWord = new double[listkwlength];
             var NewCost = new int[listkwlength];
